@@ -26,12 +26,14 @@
 ### Example
 * IBM股價資料  
 資料說明：使用IBM 2006/01/01 ~ 2018/01/01之開盤資料，以2016年為切割點，將2016年以前之資料作為訓練資料，2017年以後的資料做為測試資料。 
-![open]()
+![open](https://github.com/yifan-07/LSTM/blob/main/picture/stock_price.png?raw=true)
 (藍色員訓練集區間之股價變化；橘色為測試集區間之股價變化)  
 分析說明：  
-step 1 > 將資料做最大最小值標準化(MinMaxScaler)，給定最大值為1，最小值為0，將數據縮放置[0, 1]之間。
-step 2 > 60天前的開盤資料預測當天開盤價
-step 3 > 建立LSTM模型
+step 1 > 將資料做最大最小值標準化(MinMaxScaler)，給定最大值為1，最小值為0，將數據縮放置[0, 1]之間  
+step 2 > 60天前的開盤資料預測當天開盤價  
+step 3 > 建立LSTM模型  
+step 4 > 預測開盤  
+![predict](https://user-images.githubusercontent.com/35762304/152771971-5eae2c45-50c3-435f-8862-502d7b3a645d.png)
 
 
 
