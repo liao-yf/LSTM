@@ -8,24 +8,32 @@
 對上個節點的輸出進行非線性轉換。透過非線性轉換獲取充分的特徵組合，使得神經網路可以充分學習更多。常見的激活函數：sigmoid, tanh, ReLU。在LSTM裡常用的激活函數為sigmoid, tanh。  
 * Sigmoid：
 可用於二分類。其輸出值介於0到1之間，且為連續變數放於求導數。  
+![sigmoid_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/sigmoid.PNG)
+![sigmoid_pic](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/sigmoid_pic.PNG)
 * Tanh：  
 又稱雙曲正切曲線，其值取值為[-1,1]，為sigmoid的變形。優點為收斂較快速，缺點為容易發生梯度消失。  
+![tanh_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/tanh_func.PNG)
+![tanh_pic](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/tanh.PNG)
 
 ## Cell State 
 ![cell_state](https://github.com/yifan-07/LSTM/blob/main/picture/cell_state.png?raw=true)
 單元狀態(cell state)：  
   神經元訊息記憶空間，接收遺忘門及輸入門的訊息。如圖示，將遺忘門輸出之向量和上一個神經元狀態(Ct-1)作逐點乘積，輸入門輸出向量和候選向量作逐點乘積，並將兩者相加以獲得神經元狀態Ct。  
+![cell_state_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/cell_func.PNG)
 ## Forget Gate
 ![forget_gate](https://github.com/yifan-07/LSTM/blob/main/picture/forget_gate.png?raw=true)
 遺忘門(forget gate)：  
 在神經元中選擇丟棄過去哪些訊息，輸入時間點t之資料向量及時間點t-1的輸出向量ht-1，藉由sigmoid函數激活。sigmoid函數值介於0 ~ 1之間的值，而這個值表示gate被打開的程度。當輸出值為1時，保留輸出為0時丟棄  
+![forget_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/forget_func.PNG)
 ## Input Gate
 ![input_gate](https://github.com/yifan-07/LSTM/blob/main/picture/input_gate.png?raw=true)
 在神經元中決定記憶哪些訊息，輸入時間點t的資料向量及時間點t-1的輸出量向ht-1，並藉由sigmoid函數激活。另外利用tanh函數將時間點t的資料向量及時間點t-1的輸出向量ht-1作用為一組候選值向量，而後將兩組結果作相乘。  
+![input_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/input_func.PNG)
 ## Output Gate
 ![output_gate](https://github.com/yifan-07/LSTM/blob/main/picture/output_gate.png?raw=true)
 輸出門(output gate)：  
 神經元中決定哪些訊息要輸出給下一個時間，輸入時間點t的資料向量以及時間點t-1的輸出向量ht-1，藉由sigmoid函數進行激活。經函數激活後輸出值介於0~1之間，輸出為1時保留，輸出為0時丟棄。另外將神經元狀態Ct經由tanh激活後輸出-1到1的向量，將兩者進行逐點乘積以獲得時間點t支輸出函數ht。  
+![output_func](https://raw.githubusercontent.com/yifan-07/LSTM/9b78495931a1d0e45e3a14a07a08ec1a169ea49e/picture/output_func.PNG)
 
 ## Python
 ### Package
@@ -55,3 +63,4 @@ step 4 > 預測開盤
 * https://ithelp.ithome.com.tw/articles/10276865
 * https://codingnote.cc/zh-tw/p/176736/
 * https://clay-atlas.com/blog/2019/10/22/machine-learning-notes-tanh-function/
+* https://www.kaggle.com/thebrownviking20/intro-to-recurrent-neural-networks-lstm-gru/notebook
